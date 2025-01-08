@@ -1,0 +1,10 @@
+start transaction;
+use dbl;
+update dbl set per_name='B' where per_id=102;
+select *from dbl;
+SAVEPOINT s1;
+select*from dbl;
+update dbl set per_name='A'where per_id=102;
+SAVEPOINT s2;
+ROLLBACK To s1;
+
