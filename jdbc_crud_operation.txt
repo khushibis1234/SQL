@@ -1,0 +1,31 @@
+package khushi;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+public class khushi2 {
+	private static final String DBURL="jdbc:mysql://localhost:3306/DB3";
+	private static final String DBUSERNAME="root";
+	private static final String DBPASSWORD="Admin";
+	
+	private static final String CREATESQL="create table employee2(emp_id int,emp_name varchar(20), emp_city varchar(30))";
+	private static final String INSERTSQL=" insert into employee2 values(1,'aman','jaipur')";
+	private static final String UPDATESQL="ALTER TABLE employee2 RENAME TO worker";
+	private static final String DROPSQL="DROP TABLE IF EXISTS worker";
+	    public static void main(String[] args) throws Exception{
+	    	
+	    	Class.forName("com.mysql.cj.jdbc.Driver");
+	    	Connection con=DriverManager.getConnection( DBURL,DBUSERNAME,DBPASSWORD);
+	        Statement stmt=con.createStatement();
+	        
+	        int rowseffected =stmt.executeUpdate(CREATESQL);
+	        int rows=stmt.executeUpdate(INSERTSQL);
+	        int rowsaffected=stmt.executeUpdate(UPDATESQL);
+	        int delete=stmt.executeUpdate(DROPSQL);
+	        System.out.println(rowseffected);
+	        System.out.println(rows);
+	        System.out.println(rowsaffected);
+	        System.out.println(delete);
+	       con.close();
+		}
+}
