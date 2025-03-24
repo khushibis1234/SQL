@@ -1,0 +1,21 @@
+package com.khushi;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+public class khushi {
+private static final String DBURL="jdbc:mysql://localhost:3306/project";
+private static final String DBUSERNAME="root";
+private static final String DBPASSWORD="Admin";
+private static final String DBINSERTQUERY="insert into db4 values(?,?)";
+public static void main(String[] args) throws Exception {
+	Class.forName("com.mysql.cj.jdbc.Driver");
+	Connection con=DriverManager.getConnection(DBURL,DBUSERNAME,DBPASSWORD);
+	PreparedStatement pstmt=con.prepareStatement(DBINSERTQUERY);
+	pstmt.setInt(1,12);
+	pstmt.setString(2,"khushi");
+	int rows=pstmt.executeUpdate();
+	System.out.println(rows);
+	con.close();
+	
+			}
+}
