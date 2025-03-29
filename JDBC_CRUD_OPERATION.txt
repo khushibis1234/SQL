@@ -1,0 +1,27 @@
+package com.crud;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class khushi {
+private static final String DBURL="jdbc:mysql://localhost:3306/DB4";
+private static final String DBUSERNAME="root";
+private static final String DBPASSWORD="Admin";
+private static final String CREATESQL="create table emp4(em_id int,em_name varchar(20),em_age int(20))";
+private static final String INSERTSQL="insert into emp4 values(1,'aman',34)";
+private static final String  UPDATESQL="update emp4 SET em_name = 'anita' WHERE em_id =1";
+private static final String DROPSQL="drop table if exists emp4";
+public static void main(String[] args) throws Exception{
+	Class.forName("com.mysql.cj.jdbc.Driver");
+	Connection con=DriverManager.getConnection(DBURL,DBUSERNAME,DBPASSWORD);
+	Statement stmt=con.createStatement();
+	
+	int rows=stmt.executeUpdate(DROPSQL);
+	
+	System.out.println(rows);
+	con.close();
+	
+}
+	
+}
